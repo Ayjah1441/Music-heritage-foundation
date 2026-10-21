@@ -1,10 +1,66 @@
 'use client';
 
+import { useState, useRef } from 'react';
 import Header from './components/Header';
 
+interface Track {
+  title: string;
+  artist: string;
+  tag: string;
+  year: string;
+  audioUrl: string;
+}
+
 export default function Home() {
+  const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const tracks: Track[] = [
+    {
+      title: 'Heritage Soundwaves EP',
+      artist: "Ferdy's Band / FEMHF",
+      tag: 'Official EP',
+      year: '2026 Release',
+      // Public royalty-free preview sample
+      audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+    },
+    {
+      title: 'Roots & Resonance',
+      artist: "Ferdy's Band / FEMHF",
+      tag: 'Archival Single',
+      year: 'Classic Series',
+      // Public royalty-free preview sample
+      audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+    },
+  ];
+
+  const handlePlayTrack = (track: Track) => {
+    if (currentTrack?.title === track.title) {
+      if (isPlaying) {
+        audioRef.current?.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current?.play();
+        setIsPlaying(true);
+      }
+    } else {
+      setCurrentTrack(track);
+      setIsPlaying(true);
+      setTimeout(() => {
+        audioRef.current?.play();
+      }, 100);
+    }
+  };
+
+  const handleClosePlayer = () => {
+    audioRef.current?.pause();
+    setIsPlaying(false);
+    setCurrentTrack(null);
+  };
+
   return (
-    <main className="relative w-full min-h-screen bg-[#0b0b0e] text-white overflow-x-hidden selection:bg-blue-500 selection:text-white font-sans">
+    <main className="relative w-full min-h-screen bg-[#0b0b0e] text-white overflow-x-hidden selection:bg-blue-500 selection:text-white font-sans pb-24">
       
       {/* Fixed Header */}
       <Header />
@@ -125,12 +181,12 @@ export default function Home() {
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold tracking-wide border border-blue-500/20">
-                    Official EP
+                    {tracks[0].tag}
                   </span>
-                  <span className="text-xs text-gray-400">2026 Release</span>
+                  <span className="text-xs text-gray-400">{tracks[0].year}</span>
                 </div>
                 <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-indigo-300 transition">
-                  Heritage Soundwaves EP
+                  {tracks[0].title}
                 </h3>
                 <p className="text-gray-400 text-sm leading-relaxed mb-8">
                   A fusion of traditional acoustic rhythms and modern digital soundscapes, blending rich heritage vocals with contemporary instrumentation.
@@ -138,12 +194,17 @@ export default function Home() {
               </div>
 
               <div className="flex items-center justify-between pt-6 border-t border-white/10">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 group-hover:scale-110 transition cursor-pointer">
-                    ▶
+                <button
+                  onClick={() => handlePlayTrack(tracks[0])}
+                  className="flex items-center gap-3 group/btn focus:outline-none"
+                >
+                  <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 group-hover/btn:scale-110 transition">
+                    {currentTrack?.title === tracks[0].title && isPlaying ? '❚❚' : '▶'}
                   </div>
-                  <span className="text-xs font-medium text-gray-300">Preview Track</span>
-                </div>
+                  <span className="text-xs font-medium text-gray-300 group-hover/btn:text-white transition">
+                    {currentTrack?.title === tracks[0].title && isPlaying ? 'Pause Track' : 'Preview Track'}
+                  </span>
+                </button>
                 <span className="text-xs font-semibold text-blue-400 hover:underline cursor-pointer">
                   Listen on Streaming →
                 </span>
@@ -155,12 +216,12 @@ export default function Home() {
               <div>
                 <div className="flex items-center justify-between mb-6">
                   <span className="px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-semibold tracking-wide border border-purple-500/20">
-                    Archival Single
+                    {tracks[1].tag}
                   </span>
-                  <span className="text-xs text-gray-400">Classic Series</span>
+                  <span className="text-xs text-gray-400">{tracks[1].year}</span>
                 </div>
                 <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-purple-300 transition">
-                  Roots & Resonance
+                  {tracks[1].title}
                 </h3>
                 <p className="text-gray-400 text-sm leading-relaxed mb-8">
                   Restored archival recordings capturing authentic vocal harmonies, classic percussion, and timeless cultural compositions.
@@ -168,12 +229,17 @@ export default function Home() {
               </div>
 
               <div className="flex items-center justify-between pt-6 border-t border-white/10">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/30 group-hover:scale-110 transition cursor-pointer">
-                    ▶
+                <button
+                  onClick={() => handlePlayTrack(tracks[1])}
+                  className="flex items-center gap-3 group/btn focus:outline-none"
+                >
+                  <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/30 group-hover/btn:scale-110 transition">
+                    {currentTrack?.title === tracks[1].title && isPlaying ? '❚❚' : '▶'}
                   </div>
-                  <span className="text-xs font-medium text-gray-300">Preview Track</span>
-                </div>
+                  <span className="text-xs font-medium text-gray-300 group-hover/btn:text-white transition">
+                    {currentTrack?.title === tracks[1].title && isPlaying ? 'Pause Track' : 'Preview Track'}
+                  </span>
+                </button>
                 <span className="text-xs font-semibold text-purple-400 hover:underline cursor-pointer">
                   Explore Archive →
                 </span>
@@ -210,6 +276,42 @@ export default function Home() {
 
         </div>
       </footer>
+
+      {/* ================= STICKY AUDIO PLAYER BAR ================= */}
+      {currentTrack && (
+        <div className="fixed bottom-4 left-4 right-4 md:left-1/2 md:-translate-x-1/2 md:max-w-2xl z-50 p-4 rounded-2xl bg-[#121218]/90 border border-white/15 backdrop-blur-2xl shadow-2xl flex items-center justify-between gap-4 animate-in slide-in-from-bottom-5">
+          <audio
+            ref={audioRef}
+            src={currentTrack.audioUrl}
+            onEnded={() => setIsPlaying(false)}
+          />
+
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => handlePlayTrack(currentTrack)}
+              className="w-12 h-12 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold shadow-md hover:scale-105 transition"
+            >
+              {isPlaying ? '❚❚' : '▶'}
+            </button>
+            <div>
+              <p className="text-sm font-bold text-white">{currentTrack.title}</p>
+              <p className="text-xs text-gray-400">{currentTrack.artist}</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span className="hidden sm:inline-block text-xs px-2.5 py-1 rounded-md bg-white/10 text-blue-300 font-medium">
+              Playing Audio
+            </span>
+            <button
+              onClick={handleClosePlayer}
+              className="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition text-xs"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
 
     </main>
   );
