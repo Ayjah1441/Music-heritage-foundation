@@ -250,7 +250,83 @@ export default function Home() {
 
         </div>
       </section>
+{/* ================= CONTACT & BOOKING SECTION ================= */}
+      <section id="contact" className="relative z-10 py-28 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#0b0b0e] via-[#121218] to-[#070709] border-t border-white/5">
+        <div className="max-w-4xl mx-auto">
+          
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-3">
+              Get In Touch
+            </h2>
+            <p className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Connect with the Foundation
+            </p>
+            <p className="text-gray-400 text-sm max-w-lg mx-auto">
+              Have a proposal, performance booking, or collaboration in mind? Drop us a message and our team will get back to you.
+            </p>
+          </div>
 
+          {/* Form Container */}
+          <div className="p-8 md:p-12 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-2xl shadow-2xl">
+            <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">
+                    Your Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Alex Morgan"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="alex@example.com"
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition text-sm"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">
+                  Inquiry Type
+                </label>
+                <select className="w-full px-4 py-3 rounded-xl bg-[#121218] border border-white/10 text-white focus:outline-none focus:border-blue-500 transition text-sm">
+                  <option>Performance & Booking</option>
+                  <option>Music Archiving & Collaboration</option>
+                  <option>Mentorship & Youth Programs</option>
+                  <option>General Inquiry</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">
+                  Message
+                </label>
+                <textarea
+                  rows={4}
+                  placeholder="Tell us about your project or inquiry..."
+                  className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition text-sm"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-semibold shadow-lg shadow-indigo-500/25 transition active:scale-[0.99]"
+              >
+                Send Message →
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </section>
       {/* ================= FOOTER ================= */}
       <footer className="relative z-10 py-12 px-6 md:px-16 lg:px-24 bg-[#070709] border-t border-white/10 text-gray-400 text-sm">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
