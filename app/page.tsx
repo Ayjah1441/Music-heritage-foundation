@@ -98,7 +98,73 @@ export default function Home() {
           </div>
         </div>
       </section>
+{/* ================= FOUNDATION STORY & ABOUT SECTION ================= */}
+      <section id="about" className="relative z-10 py-28 px-6 md:px-16 lg:px-24 bg-[#0b0b0e] border-t border-white/5">
+        <div className="max-w-6xl mx-auto">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column: Story */}
+            <div>
+              <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold tracking-wide border border-blue-500/20">
+                CAC Reg: RC 174145
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mt-6 mb-6">
+                Music Therapy in Autism Management
+              </h2>
+              <p className="text-gray-300 text-base leading-relaxed mb-6">
+                The Ferdinand Effah Music Heritage Foundation is a registered non-profit organization dedicated to supporting individuals with autism spectrum disorder (ASD) through music-focused therapy.
+              </p>
+              <p className="text-gray-400 text-sm leading-relaxed mb-8">
+                Established based on the experiences of Master Ferdinand Effah, who was diagnosed with ASD early in life. When traditional approaches showed limited progress, music became a transformative tool for his development, patience, resilience, and perseverance.
+              </p>
+              
+              {/* Motto Box */}
+              <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 border-l-4 border-l-blue-500 backdrop-blur-xl">
+                <p className="text-xs uppercase tracking-widest text-blue-400 font-bold mb-1">Our Motto</p>
+                <p className="text-white italic text-sm">
+                  &ldquo;It doesn&apos;t matter how slow I move forward, as long as we don&apos;t stop&rdquo;
+                </p>
+              </div>
+            </div>
 
+            {/* Right Column: Multisectoral Pillars Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-blue-500/40 transition">
+                <div className="text-xl mb-3">🎵</div>
+                <h3 className="text-lg font-semibold text-white mb-2">Ferdy&apos;s Band</h3>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  Music therapy, public performances, and audio releases empowering autistic children.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-purple-500/40 transition">
+                <div className="text-xl mb-3">🎨</div>
+                <h3 className="text-lg font-semibold text-white mb-2">Ferdy&apos;s Fashion</h3>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  Vocational programs and creative expression expanding skill development beyond music.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-indigo-500/40 transition">
+                <div className="text-xl mb-3">🏃‍♂️</div>
+                <h3 className="text-lg font-semibold text-white mb-2">Sports & Fitness</h3>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  Marathon, fitness routines, and physical engagement to support holistic well-being.
+                </p>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-pink-500/40 transition">
+                <div className="text-xl mb-3">📺</div>
+                <h3 className="text-lg font-semibold text-white mb-2">Autism Voice TV</h3>
+                <p className="text-gray-400 text-xs leading-relaxed">
+                  Amplifying success stories, advocacy, and awareness for autistic children in Nigeria.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
       {/* ================= ABOUT & MISSION SECTION ================= */}
       <section id="mission" className="relative z-10 py-28 px-6 md:px-16 lg:px-24 bg-gradient-to-b from-[#0b0b0e] to-[#121218]">
         <div className="max-w-6xl mx-auto">
